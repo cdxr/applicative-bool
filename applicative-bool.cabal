@@ -1,0 +1,16 @@
+name:                applicative-bool
+version:             0.1.0.0
+synopsis:            applicative combinators for booleans
+-- description:         
+license:             BSD3
+license-file:        LICENSE
+author:              Craig Roche
+maintainer:          cdxr01@gmail.com
+copyright:           Copyright (c) 2013 Craig Roche
+category:            Control
+build-type:          Simple
+cabal-version:       >=1.8
+
+library
+  exposed-modules:     Control.Applicative.Bool
+  build-depends:       base ==4.6.*
