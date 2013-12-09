@@ -46,3 +46,13 @@ instance (Applicative f, AppBool b) => AppBool (f b) where
     a <||> b = (<||>) <$> a <*> b
     true = pure true
     false = pure false
+
+
+(>>&&) :: (Monad m) => m Bool -> m Bool -> m Bool
+m >>&& n = m >>= \b -> if b then n else return b
+
+(>>||) :: (Monad m) => m Bool -> m Bool -> m Bool
+m >>|| n = m >>= \b -> if b then return b else n
+
+infixl 1 >>&&
+infixl 1 >>||
