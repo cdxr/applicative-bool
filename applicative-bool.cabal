@@ -13,4 +13,4 @@ cabal-version:       >=1.8
 
 library
   exposed-modules:     Control.Applicative.Bool
-  build-depends:       base ==4.6.*
+  build-depends:       base
