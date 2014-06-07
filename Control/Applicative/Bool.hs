@@ -16,11 +16,11 @@ infixl 3 <&&>
 infixl 2 <||>
 
 
-sequenceAnd :: (AppBool b) => [b] -> b
-sequenceAnd = foldr (<&&>) true
+allA :: (AppBool b) => [b] -> b
+allA = foldr (<&&>) true
 
-sequenceOr :: (AppBool b) => [b] -> b
-sequenceOr = foldr (<||>) false
+anyA :: (AppBool b) => [b] -> b
+anyA = foldr (<||>) false
 
 
 instance AppBool Bool where
