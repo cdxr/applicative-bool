@@ -21,7 +21,7 @@ class AppBool b where
     --
     neg   :: b -> b
 
-    -- | Lifted `(&&)`
+    -- | Lifted @(&&)@
     --
     -- @
     -- true  <&&> true  = true
@@ -32,7 +32,7 @@ class AppBool b where
     --
     (<&&>) :: b -> b -> b
 
-    -- | Lifted `(||)`
+    -- | Lifted @(||)@
     --
     -- @
     -- true  <||> true  = true
@@ -46,8 +46,8 @@ class AppBool b where
     -- | Exclusive disjunction, i.e "xor"
     --
     -- @
-    -- p <+> q  =  (p <||> q) <&&> neg (p <&&> q)
-    -- p <+> q  =  p /= q
+    -- p `<+>` q  =  (p `<||>` q) <&&> neg (p `<&&>` q)
+    -- p `<+>` q  =  p `/=` q
     -- @
     --
     (<+>) :: b -> b -> b
@@ -55,8 +55,8 @@ class AppBool b where
     -- | Equivalence
     --
     -- @
-    -- p <=> q  =  (neg p <||> q) <&&> (neg q <||> p)
-    -- p <=> q  =  p == q
+    -- p `<=>` q  =  (neg p <||> q) <&&> (neg q <||> p)
+    -- p `<=>` q  =  p == q
     -- @
     --
     (<=>) :: b -> b -> b
@@ -88,7 +88,7 @@ instance AppBool Bool where
 instance AppBool Any where
     true  = Any True
     false = Any False
-    neg (Any b) = Any $ neg b
+    neg (Any b) = Any $ not b
     Any a <&&> Any b = Any $ a && b
     Any a <||> Any b = Any $ a || b
     a <+> b = Any $ a /= b
@@ -97,7 +97,7 @@ instance AppBool Any where
 instance AppBool All where
     true  = All True
     false = All False
-    neg (All b) = All $ neg b
+    neg (All b) = All $ not b
     All a <&&> All b = All $ a && b
     All a <||> All b = All $ a || b
     a <+> b = All $ a /= b
